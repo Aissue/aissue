@@ -15,6 +15,7 @@ public class Hello {
     @RequestMapping(value = "/index")
     @ResponseBody
     public String index() {
+        System.out.println("test");
         return "helloindex";
     }
 
