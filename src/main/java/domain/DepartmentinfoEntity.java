@@ -4,10 +4,10 @@ import javax.persistence.*;
 
 /**
  * Created by Aissue on 2017/6/7.
+ *
  */
 @Entity
 @Table(name = "departmentinfo", schema = "aissue", catalog = "")
-@IdClass(DepartmentinfoEntityPK.class)
 public class DepartmentinfoEntity {
     private int departId;
     private String departName;
@@ -54,27 +54,4 @@ public class DepartmentinfoEntity {
         this.managerId = managerId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DepartmentinfoEntity that = (DepartmentinfoEntity) o;
-
-        if (departId != that.departId) return false;
-        if (userId != that.userId) return false;
-        if (departName != null ? !departName.equals(that.departName) : that.departName != null) return false;
-        if (managerId != null ? !managerId.equals(that.managerId) : that.managerId != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = departId;
-        result = 31 * result + (departName != null ? departName.hashCode() : 0);
-        result = 31 * result + userId;
-        result = 31 * result + (managerId != null ? managerId.hashCode() : 0);
-        return result;
-    }
 }
