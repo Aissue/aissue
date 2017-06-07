@@ -1,4 +1,4 @@
-package com.aissue.demo.controller;
+package com.aissue.controllor;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.aissue.demo.controller;
+package com.aissue.controllor;
 
 import org.apache.log4j.Logger;
 

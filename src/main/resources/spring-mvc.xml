@@ -14,7 +14,7 @@
 
     <context:annotation-config/>
 
-    <context:component-scan base-package="com.aissue.demo.controller">
+    <context:component-scan base-package="com.aissue.*">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
