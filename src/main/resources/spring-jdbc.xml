@@ -67,8 +67,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         <!-- 给出需要扫描Dao接口包 -->
         <property name="basePackage" value="cn.acheng1314.dao"/>
     </bean>
-    <!-- 上面的druid的配置 -->
+    <!-- 上面的druid的配置
     <bean id="logFilter" class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
         <property name="statementExecutableSqlLogEnable" value="false" />
-    </bean>
+    </bean>-->
 </beans>
