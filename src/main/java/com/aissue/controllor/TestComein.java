@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
-
 
 /**
- * Created by Aissue on 2017/6/3.
+ * Created by Aissue on 2017/6/8.
  *
  */
 @Controller
-@RequestMapping("/allTest")
-public class Hello {
+@RequestMapping("all")
+public class TestComein {
 
+    @Autowired
+    private BaseService baseService;
 
-    @RequestMapping(value = "/test1")
+    @RequestMapping(value = "test1")
     @ResponseBody
-    public String test1() {
-        System.out.println("jkjkj");
-        return "successful!";
+    public String test1() throws Exception {
+        Userinfor userinfor=(Userinfor) baseService.findObjectOne("com.aissue.mapper.userMapper.getUser",1);
+        System.out.println("successful");
+        return userinfor.getName();
     }
-
 }
