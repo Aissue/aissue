@@ -1,6 +1,5 @@
 package com.aissue.controllor;
 
-import com.aissue.domain.Userinfor;
 import com.aissue.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

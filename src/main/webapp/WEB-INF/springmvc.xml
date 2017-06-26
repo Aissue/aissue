@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
     http://www.springframework.org/schema/context
@@ -10,7 +11,7 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
     http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.aissue.controllor"/>
@@ -34,4 +35,31 @@
         <property name="prefix" value="/WEB-INF/views/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!--线程池相关-->
+    <!-- spring thread pool executor -->
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 线程池维护线程的最少数量 -->
+        <property name="corePoolSize" value="5" />
+        <!-- 允许的空闲时间 -->
+        <property name="keepAliveSeconds" value="200" />
+        <!-- 线程池维护线程的最大数量 -->
+        <property name="maxPoolSize" value="10" />
+        <!-- 缓存队列 -->
+        <property name="queueCapacity" value="20" />
+        <!-- 线程池对拒绝任务(无线程可用)的处理策略
+         若不作该处理，当线程满了，队列满了之后，继续往下增加任务，则抛出异常，拒绝该任务 -->
+        <property name="rejectedExecutionHandler">
+            <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+        </property>
+    </bean>
+    <!-- 注解式
+    <task:annotation-driven />-->
+
+    <task:executor id="executor" pool-size="5" />
+    <task:scheduler id="scheduler" pool-size="10" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
+
+
+
 </beans>

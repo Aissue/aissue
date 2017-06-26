@@ -13,7 +13,7 @@
         根据id查询得到一个user对象
      -->
     <select id="getUser" parameterType="int"
-            resultType="com.aissue.domain.Userinfor">
+            resultType="com.aissue.domain.UserinforEntity">
         select * from userinfor where id=#{id}
     </select>
 </mapper>

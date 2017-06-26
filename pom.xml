@@ -11,7 +11,8 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- spring版本号 -->
-    <spring.version>4.1.1.RELEASE</spring.version>
+    <spring.version>4.2.4.RELEASE</spring.version>
+    <springframework.version>3.0.5.RELEASE</springframework.version>
     <!-- mybatis版本号 -->
     <mybatis.version>3.2.6</mybatis.version>
     <!-- log4j日志文件管理包版本 -->
@@ -19,6 +20,9 @@
     <log4j.version>1.2.17</log4j.version>
     <!-- jackson包版本 -->
     <jackson.version>2.5.0</jackson.version>
+    <hibernate.jpa.version>1.0.1.Final</hibernate.jpa.version>
+    <hibernate.core.version>3.5.5-Final</hibernate.core.version>
+    <hibernate.validator.version>4.3.1.Final</hibernate.validator.version>
   </properties>
 
   <dependencies>
@@ -79,7 +83,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-aspects</artifactId>
-      <version>4.0.9.RELEASE</version>
+      <version>${spring.version}</version>
     </dependency>
 
     <dependency>
@@ -98,6 +102,30 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
       <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>4.2.2.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>1.8.0.RC1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>2.2.2</version>
     </dependency>
 
     <!-- AOP begin -->
@@ -292,9 +320,24 @@
     </dependency>
     <!--hibernate 相关  -->
     <dependency>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.0-api</artifactId>
+      <version>${hibernate.jpa.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>3.6.0.Final</version>
+      <version>${hibernate.core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>${hibernate.core.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.validator.version}</version>
     </dependency>
 
 
