@@ -22,6 +22,7 @@ public class Hello {
     @RequestMapping(value = "/test1")
     @ResponseBody
     public String test1() {
+
         System.out.println("jkjkj");
         return "successful!";
     }
