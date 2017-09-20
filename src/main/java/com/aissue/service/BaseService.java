@@ -17,7 +17,6 @@ import java.util.List;
  *
  */
 @Service
-@Transactional
 public class BaseService {
 
     @Autowired
@@ -26,31 +25,26 @@ public class BaseService {
     @PersistenceContext
     EntityManager entityManager;
 
-    @Transactional
     public EntityManager getEm(){
         return this.entityManager;
     }
 
-    @Transactional
     public List queryForListBySql(String statementId,Object value) throws Exception{
         List list=this.sqlSessionTemplate.selectList(statementId,value);
         return list;
     }
 
-    @Transactional
     public Object findObjectOne(String statementId,Object value){
         Object object=this.sqlSessionTemplate.selectOne(statementId,value);
         return object;
     }
 
-    @Transactional
     public Object save(Object object) throws Exception{
         getEm().persist(object);
         getEm().flush();
         return object;
     }
 
-    @Transactional
     public Object update(Object object) throws  Exception{
         getEm().merge(object);
         getEm().flush();

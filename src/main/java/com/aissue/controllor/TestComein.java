@@ -27,10 +27,10 @@ public class TestComein {
     @ResponseBody
     public String test1() throws Exception {
         UserinforEntity user=new UserinforEntity();
-        user.setId(2);
+        user.setId(1);
         user.setName("王坤");
         user.setSalary(234.99);
-        user.setGender("1");
+        user.setGender("男");
         baseService.save(user);
 
         return "successful";

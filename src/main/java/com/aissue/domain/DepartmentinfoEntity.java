@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by Aissue on 2017/6/13.
  */
 @Entity
-@Table
+@Table(name = "ae_department")
 public class DepartmentinfoEntity implements Serializable{
     private int departId;
     private String departName;
@@ -15,7 +15,7 @@ public class DepartmentinfoEntity implements Serializable{
     private Integer managerId;
 
     @Id
-    @Column(name = "departId")
+    @Column(name = "departId",length = 64)
     public int getDepartId() {
         return departId;
     }
@@ -25,7 +25,7 @@ public class DepartmentinfoEntity implements Serializable{
     }
 
     @Basic
-    @Column(name = "departName")
+    @Column(name = "departName",length = 64)
     public String getDepartName() {
         return departName;
     }

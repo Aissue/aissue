@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by Aissue on 2017/6/13.
  */
 @Entity
-@Table
+@Table(name = "ae_user")
 public class UserinforEntity implements Serializable {
     private int id;
     private String name;
@@ -25,7 +25,7 @@ public class UserinforEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "name")
+    @Column(name = "name",length = 64)
     public String getName() {
         return name;
     }
@@ -35,7 +35,7 @@ public class UserinforEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "gender")
+    @Column(name = "gender",length = 8)
     public String getGender() {
         return gender;
     }

@@ -103,31 +103,29 @@
     </bean>-->
 
     <!--jpa管理工厂-->
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-
+    <bean id="entityManager" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <!--数据源-->
         <property name="dataSource" ref="dataSource"/>
+        <property name="loadTimeWeaver">
+            <bean class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+        </property>
         <!--适配器-->
         <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+                p:database="MYSQL" p:showSql="true"/>
         </property>
-
         <!--扫描包-->
-        <property name="packagesToScan" value="com.aissue.domain"/>
-
-
+        <property name="packagesToScan" value="com.aissue.domain.**"/>
         <!--基本配置-->
         <property name="jpaProperties">
             <props>
                 <!--命名策略-->
                 <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
-
                 <!--基本配置-->
                 <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-
                 <!--二级缓存
                 <prop key="hibernate.cache.use_query_cache">true</prop>
                 <prop key="hibernate.cache.use_second_level_cache">true</prop>
@@ -139,17 +137,16 @@
         <property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>-->
     </bean>
 
-
     <!--配置事务-->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="entityManagerFactory" ref="entityManager"/>
     </bean>
 
-    <!--配置基于注解的事务
-    <tx:annotation-driven transaction-manager="transactionManager"/>-->
+    <!--配置基于注解的事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--配置spring data-->
-    <jpa:repositories base-package="com.aissue" entity-manager-factory-ref="entityManagerFactory"/>
+    <jpa:repositories base-package="com.aissue.*" entity-manager-factory-ref="entityManager"/>
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
